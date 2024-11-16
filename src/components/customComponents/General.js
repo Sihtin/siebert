@@ -1,6 +1,15 @@
 import React from "react";
+import Grid from "@mui/material/Grid2";
+import Sidebar from "./sidebar/sidebar";
+import generalStyle from "./generalStyle";
 
 const General = () => {
-  return <p style={{ fontFamily: "OpenSans", fontWeight: 900 }}>Welcome to Siebert</p>;
+  return (
+    <Grid container>
+      <Grid sx={generalStyle.sidebar}>
+        <Sidebar />
+      </Grid>
+    </Grid>
+  );
 };
 export default General;
