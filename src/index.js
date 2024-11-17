@@ -1,15 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import General from './components/customComponents/General';
-import reportWebVitals from './reportWebVitals';
+import General from "./components/customComponents/General";
+import reportWebVitals from "./reportWebVitals";
 
-import './index.css';
+import "./index.css";
+import { Provider } from "react-redux";
+import { store } from "./redux/store/Store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <General />
+    <Provider store={store}>
+      <General />
+    </Provider>
   </React.StrictMode>,
 );
 
