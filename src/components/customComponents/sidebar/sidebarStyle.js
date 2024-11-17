@@ -33,10 +33,10 @@ const sidebarStyle = {
     height: "16px",
   },
   logoutButton: {
-    height: "100px",
+    height: "30px",
     width: "250px",
     position: "absolute !important",
-    bottom: "10px !important",
+    bottom: "0px !important",
   },
   logoutButtonStyle: {
     height: "54px",
