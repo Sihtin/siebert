@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import General from "./components/customComponents/General";
+import General from "./components/customComponents/GeneralComponent";
 import reportWebVitals from "./reportWebVitals";
 
 import "./index.css";

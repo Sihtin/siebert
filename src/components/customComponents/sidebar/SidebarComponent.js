@@ -7,8 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSelectedPath } from "../../../redux/reducer/SidebarReducer";
 
 import Grid from "@mui/material/Grid2";
-import { Divider, List, ListItem, ListItemButton, Paper, Typography } from "@mui/material";
-import sidebarStyle from "./SidebarStyle";
+import { Divider, List, ListItem, ListItemButton, Typography } from "@mui/material";
+import sidebarStyle from "./SidebarComponentStyle";
 
 const Sidebar = () => {
   const [activePath, setActivePath] = useState(null);
