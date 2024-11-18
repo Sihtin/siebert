@@ -1,6 +1,6 @@
 const sidebarStyle = {
   container: {
-    width: "100%",
+    width: "95%",
     height: "100vh",
     backgroundColor: "#000000",
   },
@@ -25,7 +25,7 @@ const sidebarStyle = {
   },
   dividerStyle: {
     borderColor: "#FFFFFF33",
-    width: "225px",
+    width: "175px",
   },
   iconStyle: {
     marginRight: "8px",
@@ -34,7 +34,7 @@ const sidebarStyle = {
   },
   logoutButton: {
     height: "30px",
-    width: "250px",
+    width: "180px",
     position: "absolute !important",
     bottom: "0px !important",
   },

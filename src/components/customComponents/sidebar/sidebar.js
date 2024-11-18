@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { globalMessage } from "../../../util/constant/StringConstants";
+import { globalMessages } from "../../../util/constant/StringConstants";
 import { assetKeys } from "../../../util/constant/AssetsConstants";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,6 +24,7 @@ const Sidebar = () => {
   useEffect(() => {
     dispatch(setSelectedPath(`/${pathName.pathname.split("/")[1]}`));
     handleItemClick(pathName.pathname);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPathLink]);
 
   const sidebarList = [
@@ -87,45 +88,43 @@ const Sidebar = () => {
   };
 
   return (
-    <Paper elevation={3}>
-      <Grid container sx={sidebarStyle.container} spacing={2}>
-        <Grid width={"100%"}>
-          <Grid size={12} mt={2} ml={2}>
-            <img src={assetKeys.siebertLogo} alt="Siebert Logo" width={120} height={35} />
-            <Typography mt={1} sx={sidebarStyle.imageText}>
-              {globalMessage.communicationPortal}
-            </Typography>
-          </Grid>
-          <Grid mt={1}>
-            <List>
-              {sidebarList.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.path}
-                  style={{
-                    textDecoration: "none",
-                    color: "inherit",
-                  }}
-                >
-                  <SidebarItem key={index} item={item} index={index} activePath={activePath} />
-                </Link>
-              ))}
-            </List>
+    <Grid container sx={sidebarStyle.container}>
+      <Grid width={"100%"}>
+        <Grid size={12} mt={2} ml={2}>
+          <img src={assetKeys.siebertLogo} alt="Siebert Logo" width={120} height={35} />
+          <Typography mt={1} sx={sidebarStyle.imageText}>
+            {globalMessages.communicationPortal}
+          </Typography>
+        </Grid>
+        <Grid mt={1}>
+          <List>
+            {sidebarList.map((item, index) => (
+              <Link
+                key={index}
+                to={item.path}
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                <SidebarItem key={index} item={item} index={index} activePath={activePath} />
+              </Link>
+            ))}
+          </List>
 
-            <List sx={sidebarStyle.logoutButton}>
-              <Divider variant="middle" sx={sidebarStyle.dividerStyle} />
-              <ListItem>
-                {/* Need to implement login functionalities */}
-                {/* <ListItemButton sx={{ ...sidebarStyle.logoutButtonStyle, fontWeight: 600 }}>
+          <List sx={sidebarStyle.logoutButton}>
+            <Divider variant="middle" sx={sidebarStyle.dividerStyle} />
+            <ListItem>
+              {/* Need to implement login functionalities */}
+              {/* <ListItemButton sx={{ ...sidebarStyle.logoutButtonStyle, fontWeight: 600 }}>
                   <img src={assetKeys.logoutWhiteIcon} alt={"logout"} style={sidebarStyle.iconStyle} />
-                  {globalMessage.logout}
+                  {globalMessages.logout}
                 </ListItemButton> */}
-              </ListItem>
-            </List>
-          </Grid>
+            </ListItem>
+          </List>
         </Grid>
       </Grid>
-    </Paper>
+    </Grid>
   );
 };
 

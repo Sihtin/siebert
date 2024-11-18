@@ -14,7 +14,7 @@ const General = () => {
         <Grid sx={generalStyle.sidebar}>
           <Sidebar />
         </Grid>
-        <Grid ml={1}>
+        <Grid ml={1} sx={generalStyle.children}>
           <Routes>
             <Route path={routingUrl.dashboard} element={<Dashboard />} />
             <Route path={routingUrl.accountManagement} element={<AccountManagement />} />
