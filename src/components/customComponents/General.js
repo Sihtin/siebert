@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid2";
-import Sidebar from "./sidebar/SidebarComponent";
-import generalStyle from "./GeneralComponentStyle";
+import Sidebar from "./sidebar/Sidebar";
+import generalStyle from "./GeneralStyle";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/dashboard/dashboard";
 import AccountManagement from "../pages/accountManagement/accountManagement";
