@@ -9,4 +9,9 @@ export const globalMessages = {
 
   //Account Management
   accountManagement: "Account Management",
+  sendEmail: "SEND EMAIL",
+  printMail: "PRINT MAIL",
+
+  //Table UI
+  noDataFound: "No Data Found",
 };

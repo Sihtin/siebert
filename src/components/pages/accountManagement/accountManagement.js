@@ -5,6 +5,12 @@ import { globalMessages } from "../../../util/constant/StringConstants";
 import { routingUrl } from "../../../util/constant/UrlConstants";
 import { Card, CardContent, Typography } from "@mui/material";
 import accountManagementStyles from "./accountManagementStyle";
+import ButtonWithIcon from "../../formUI/ButtonWithIcon";
+import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import { assetKeys } from "../../../util/constant/AssetsConstants";
+import TableUI from "../../customComponents/table/TableUI";
+import { accountManagementConfig } from "./accountManagementConfig";
+import { accountData } from "./emptyAccountData";
 
 const AccountManagement = () => {
   const breadcrumbsData = [
@@ -18,6 +24,16 @@ const AccountManagement = () => {
     },
   ];
 
+  const handleSendEmail = () => {
+    //Need to Implement functionalities
+  };
+
+  const accountTableData = {
+    tableHeaders: accountManagementConfig.tableHeaders,
+    tableFields: accountManagementConfig.tableFields,
+    tableContents: accountData,
+  };
+
   return (
     <Grid container mr={1.5}>
       <Grid size={12} mt={2}>
@@ -28,15 +44,31 @@ const AccountManagement = () => {
       </Grid>
       <Grid size={12} mt={2}>
         {/* Need to add Table content */}
-        <Card>
+        <Card sx={{ height: "80vh" }}>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all
-              continents except Antarctica
-            </Typography>
+            <Grid container gap={2}>
+              <Grid>
+                <ButtonWithIcon
+                  onClick={handleSendEmail}
+                  sx={accountManagementStyles.sendEmailButtonStyle}
+                  startIcon={<NotificationsNoneOutlinedIcon sx={{ mr: -0.8, mt: -0.3 }} />}
+                >
+                  {globalMessages.sendEmail}
+                </ButtonWithIcon>
+              </Grid>
+              <Grid>
+                <ButtonWithIcon
+                  onClick={handleSendEmail}
+                  sx={accountManagementStyles.sendEmailButtonStyle}
+                  startIcon={<img src={assetKeys.sendMailIcon} alt="Send Mail Icon" width={"16px"} height={"16px"} />}
+                >
+                  {globalMessages.printMail}
+                </ButtonWithIcon>
+              </Grid>
+            </Grid>
+            <Grid mt={3}>
+              <TableUI tableData={accountTableData} tableHeight={"55vh"} />
+            </Grid>
           </CardContent>
         </Card>
       </Grid>
