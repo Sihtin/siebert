@@ -157,7 +157,6 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
           let startDate = field?.startTime;
           let innerArrayKey = field.innerId;
           let dollarSign = field?.dollarSign ? "$" : "";
-          let showMap = field?.showMapIcon ? true : false;
           let tableCellValue = field.isConvertToTimezone
             ? convertToAreaTimeZone(contentRow[fieldName], contentRow?.timeZone?.timeZone, contentRow[startDate])
             : contentRow[fieldName];
@@ -244,7 +243,6 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
                 >
                   <Grid container spacing={0}>
                     <Grid item md={12} lg={12}>
-                      {dollarSign}
                       {tableCellValue?.length > 45 ? tableCellValue.slice(0, 45) + "..." : tableCellValue}
                     </Grid>
                   </Grid>
