@@ -1,6 +1,7 @@
 export const apiEndPoints = {
-  getAccount: "/Account",
+  getAccount: "/api/Account",
   login: "/auth/login",
+  logout:"/auth/logout"
 };
 
 export const routingUrl = {

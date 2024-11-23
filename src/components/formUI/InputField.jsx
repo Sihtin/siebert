@@ -43,7 +43,7 @@ const styles = {
   labelStyles: {
     fontFamily: "OpenSans",
     paddingLeft: "5px",
-    fontWeight: 600,
+    fontWeight: 700,
     fontSize: "16px",
     width: "350px",
   },
@@ -154,7 +154,7 @@ const InputField = ({
         onInput={onInput}
         {...otherProps}
         inputProps={{ maxLength: maxLength }}
-        type={showPassword ? "text" : "password"} // Toggle type between text and password
+        type={name === "password" ? (showPassword ? "text" : "password") : "text"} // Toggle type between text and password
         InputProps={{
           readOnly: readOnly,
           ...(textFieldIcon && {
@@ -193,7 +193,7 @@ const InputField = ({
           }),
           // Add the password visibility toggle icon
           ...(name === "password" && {
-            endAdornment: value && (
+            endAdornment: (name === "password" && value) && (
               <InputAdornment position="end">
                 <IconButton onClick={togglePasswordVisibility} edge="end">
                   {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}

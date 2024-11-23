@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 
 import { globalMessages } from "../../../util/constant/StringConstants";
 import { assetKeys } from "../../../util/constant/AssetsConstants";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedPath } from "../../../redux/reducer/SidebarReducer";
 
 import Grid from "@mui/material/Grid2";
 import { Divider, List, ListItem, ListItemButton, Typography } from "@mui/material";
 import sidebarStyle from "./SidebarStyle";
+import { logOutApi } from "../../controllers/LoginController";
+import { statusCode } from "../../../service/axios/ApiHelper";
+import { routingUrl } from "../../../util/constant/UrlConstants";
+import { saveToLocalStorage } from "../../../util/common/LocalStorageUtils";
+import { toast } from "react-toastify";
 
 const Sidebar = () => {
   const [activePath, setActivePath] = useState(null);
   const selectedPathLink = useSelector((state) => state.selectedPath.selectedPath);
   const pathName = useLocation();
   const dispatch = useDispatch();
+  const router = useNavigate();
 
   const handleItemClick = (path) => {
     setActivePath(path);
@@ -26,6 +32,15 @@ const Sidebar = () => {
     handleItemClick(pathName.pathname);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPathLink]);
+
+  const logout = async() => {
+    const logoutResponse = await logOutApi();
+    if(logoutResponse?.status === statusCode.success) {
+      router(routingUrl.login)
+    } else {
+      toast.error(globalMessages.somethingWrong);
+    }
+  }
 
   const sidebarList = [
     {
@@ -115,11 +130,10 @@ const Sidebar = () => {
           <List sx={sidebarStyle.logoutButton}>
             <Divider variant="middle" sx={sidebarStyle.dividerStyle} />
             <ListItem>
-              {/* Need to implement login functionalities */}
-              {/* <ListItemButton sx={{ ...sidebarStyle.logoutButtonStyle, fontWeight: 600 }}>
+              <ListItemButton sx={{ ...sidebarStyle.logoutButtonStyle, fontWeight: 600 }} onClick={logout}>
                   <img src={assetKeys.logoutWhiteIcon} alt={"logout"} style={sidebarStyle.iconStyle} />
                   {globalMessages.logout}
-                </ListItemButton> */}
+              </ListItemButton>
             </ListItem>
           </List>
         </Grid>

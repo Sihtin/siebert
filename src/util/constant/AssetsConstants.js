@@ -10,4 +10,5 @@ export const assetKeys = {
   reportBlackIcon: "/assets/icons/report_black_icon.png",
   logoutWhiteIcon: "/assets/icons/logout_white_icon.png",
   sendMailIcon: "/assets/icons/sendMailIcon.png",
+  loginPageImage:"/assets/images/login_page_image.png"
 };

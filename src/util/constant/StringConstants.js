@@ -12,9 +12,11 @@ export const globalMessages = {
   enterUserName: "Enter User Name",
   password: "Password",
   enterPassword: "Enter Password",
-  loginButton: "Login",
+  loginButton: "Log In",
   loginPageHeading: "Login",
   errorOccurredWhileLogin: "An error occurred while login",
+  invalidUser:"Invalid User",
+  somethingWrong:"Something wrong please try again",
 
   // Dashboard
   Dashboard: "Dashboard",

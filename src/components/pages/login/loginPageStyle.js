@@ -1,14 +1,16 @@
 const loginPageStyle = {
   cardStyle: {
-    padding: "2px",
-    justifyContent: "center",
-    alignContent: "center",
+    padding: "10px",
+    borderRadius:"20px",
   },
   heading: {
     fontStyle: "OpenSans",
-    fontSize: "22px",
+    fontSize: "26px",
     textAlign: "center",
     fontWeight: 600,
+  },
+  loginFormGridStyle:{
+    backgroundColor:"#000000",
   },
   loginButtonStyle: {
     height: "44px",
