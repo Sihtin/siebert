@@ -1,8 +1,10 @@
 export const apiEndPoints = {
   getAccount: "/Account",
-}
+};
 
 export const routingUrl = {
-  dashboard: "/",
+  defaultRenderingPage: "/",
+  login: "/login",
+  dashboard: "/dashboard",
   accountManagement: "accountManagement",
 };
