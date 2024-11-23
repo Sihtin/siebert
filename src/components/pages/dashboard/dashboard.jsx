@@ -1,5 +1,4 @@
 import * as React from "react";
-import Breadcrumb from "../../customComponents/breadcrumb/Breadcrumb";
 import { globalMessages } from "../../../util/constant/StringConstants";
 import Grid from "@mui/material/Grid2";
 import { Card, CardContent, Typography } from "@mui/material";

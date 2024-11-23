@@ -15,8 +15,9 @@ import { getAccountList } from "../../../redux/reducer/AccountListReducer";
 import CenterCircularBar from "../../customComponents/centercircularbar/CenterCircularBar";
 
 const AccountManagement = () => {
-  const accountListData = useSelector((state) => state.accountList);
+  const getAccountListData = useSelector((state) => state.accountList);
   const dispatch = useDispatch();
+  const accountListData = getAccountListData?.data?.data ?  getAccountListData?.data?.data?.data : []
 
   useEffect(() => {
     dispatch(getAccountList());
@@ -40,12 +41,12 @@ const AccountManagement = () => {
   const accountTableData = {
     tableHeaders: accountManagementConfig.tableHeaders,
     tableFields: accountManagementConfig.tableFields,
-    tableContents: accountListData ? accountListData?.data : [],
+    tableContents: accountListData ? accountListData : [],
   };
 
   return (
     <>
-      {accountListData?.isLoading && !accountListData?.isFetched ? (
+      {getAccountListData?.isLoading && !getAccountListData?.isFetched ? (
         <CenterCircularBar />
       ) : (
         <Grid container mr={1.5}>

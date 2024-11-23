@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { accountData } from "../../components/pages/accountManagement/emptyAccountData";
+import { apiCall, apiMethods } from "../../service/axios/ApiHelper";
+import { apiEndPoints } from "../../util/constant/UrlConstants";
 
 const initialState = {
   data: [],
@@ -9,11 +10,10 @@ const initialState = {
 };
 
 export const getAccountList = createAsyncThunk("fetchAccountList", async () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(accountData);
-    }, 2000);
-  });
+  return apiCall({
+    method:apiMethods.GET,
+    endPoint:apiEndPoints.getAccount
+  })
 });
 
 const accountListSlice = createSlice({

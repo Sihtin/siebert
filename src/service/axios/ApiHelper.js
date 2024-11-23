@@ -2,15 +2,15 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import { errorCodes } from "@/app/util/constant/apiErrorConstants";
-import { routingUrl } from "@/app/util/constant/UrlConstants";
+import { errorCodes } from "../../util/constant/apiErrorConstants";
+import { routingUrl } from "../../util/constant/UrlConstants";
 
 const navigate = (path) => {
   window.location.href = `${window.location.origin}/${path}`;
 };
 
 // Replace enum with an object for API methods
-const apiMethods = {
+export const apiMethods = {
   GET: "GET",
   POST: "POST",
   PUT: "PUT",
@@ -18,7 +18,7 @@ const apiMethods = {
 };
 
 export const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  baseURL:  process.env.REACT_APP_SERVER_URL,
   headers: {
     Accept: "application/json",
   },
@@ -54,23 +54,12 @@ axiosInstance.interceptors.response.use(
 );
 
 export const apiCall = async (params) => {
-  let authHeader = {
-    Authorization: `Bearer ${Cookies.get("token") ?? ""}`,
-    AuthorizationRefresh: `Bearer ${Cookies.get("refresh_token") ?? ""}`,
-  };
   switch (params.method) {
     case apiMethods.GET: {
       const response = await axiosInstance({
         method: params.method,
         url: params.endPoint,
-        headers: authHeader,
       });
-      const refreshToken = response?.headers["refresh_token"];
-      const token = response?.headers["token"];
-      if (token && refreshToken) {
-        Cookies.set("token", token);
-        Cookies.set("refresh_token", refreshToken);
-      }
       return { data: response?.data, status: response?.status };
     }
     case apiMethods.POST:
@@ -80,7 +69,6 @@ export const apiCall = async (params) => {
         method: params.method,
         url: params.endPoint,
         data: params.data,
-        headers: authHeader,
       });
       return { data: response?.data, status: response?.status };
     }
