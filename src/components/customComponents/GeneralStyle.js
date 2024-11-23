@@ -6,8 +6,11 @@ const generalStyle = {
     flexWrap: "nowrap",
   },
   sidebar: {
+    position: "sticky",
+    top: 0,
+    left: 0,
     width: "260px",
-    flexShrink: 0,
+    height: "100vh",
     "@media (max-width: 650px)": {
       display: "none",
     },

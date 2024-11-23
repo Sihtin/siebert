@@ -7,6 +7,10 @@ export const globalMessages = {
   home: "Home",
   newAccountManagement: "New Account Management",
 
+  // Dashboard
+  Dashboard: "Dashboard",
+  overViewMetrics: "Overview Metrics",
+
   //Account Management
   accountManagement: "Account Management",
   sendEmail: "SEND EMAIL",
