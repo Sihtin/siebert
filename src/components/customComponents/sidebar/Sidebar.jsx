@@ -32,7 +32,7 @@ const Sidebar = () => {
       itemName: "Dashboard",
       activeIcon: assetKeys.dashboardBlackIcon,
       deactivateIcon: assetKeys.dashboardWhiteIcon,
-      path: "/",
+      path: "/dashboard",
     },
     {
       itemName: "New Account",

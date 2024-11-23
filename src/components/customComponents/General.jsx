@@ -11,7 +11,7 @@ import Login from "../pages/login/login";
 const General = () => {
   const location = useLocation();
 
-  const isLoginPage = location.pathname.includes(routingUrl.defaultRenderingPage || routingUrl.login);
+  const isLoginPage = location.pathname.includes(routingUrl.login);
 
   return (
     <Grid container>

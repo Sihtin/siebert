@@ -7,6 +7,15 @@ export const globalMessages = {
   home: "Home",
   newAccountManagement: "New Account Management",
 
+  // Login Page
+  userName: "User Name",
+  enterUserName: "Enter User Name",
+  password: "Password",
+  enterPassword: "Enter Password",
+  loginButton: "Login",
+  loginPageHeading: "Login",
+  errorOccurredWhileLogin: "An error occurred while login",
+
   // Dashboard
   Dashboard: "Dashboard",
   overViewMetrics: "Overview Metrics",
