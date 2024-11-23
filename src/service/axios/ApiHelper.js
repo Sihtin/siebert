@@ -44,7 +44,7 @@ axiosInstance.interceptors.response.use(
       navigate(routingUrl.serverDown);
     } else if (error?.response?.status === statusCode.unauthorized_user) {
       if (error?.response?.data?.messageCode !== errorCodes.er004) {
-        navigate(routingUrl.loginURL);
+        navigate(routingUrl.login);
         Cookies.remove("validUser");
       }
       return error?.response;
