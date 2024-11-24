@@ -11,6 +11,7 @@ const generalStyle = {
     left: 0,
     width: "260px",
     height: "100vh",
+    zIndex: 2000,
     "@media (max-width: 650px)": {
       display: "none",
     },

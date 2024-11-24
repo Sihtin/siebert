@@ -17,7 +17,7 @@ import { globalMessages } from "../../../util/constant/StringConstants";
 import CustomCheckbox from "../../formUI/CustomCheckbox";
 import { tableStyle } from "./TableStyle";
 
-const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
+const TableUI = ({ tableData, tableHeight, redirection, statusDisplay, setTableRowContent }) => {
   const dispatch = useDispatch();
   const [, setClicked] = useState(false);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
@@ -99,10 +99,9 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
           const tableWidth = field.width || "";
           if (field.checkbox) {
             return (
-              <TableCell key={columnIndex} sx={{ zIndex: 2, backgroundColor: "#e1fbf0" }} data-testid="table-cell">
+              <TableCell key={columnIndex} sx={{ zIndex: 2, backgroundColor: "#e1fbf0" }} data-testid="table-cell"  onChange={handleSelectAllClick}>
                 <CustomCheckbox
                   checked={selectAllChecked}
-                  onChange={handleSelectAllClick}
                   data-testid="custom-checkbox"
                 />
               </TableCell>
@@ -125,8 +124,8 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
     );
   };
 
-  const tableCellRouting = (contentRow, field) => {
-    // Need to Implement
+  const tableCellRouting = (content) => {
+      setTableRowContent(content);
   };
 
   const renderArrayOfObject = (cellValue, innerKey) => {
@@ -149,8 +148,8 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
   };
 
   const getRowContent = () => {
-    return tableData?.tableContents?.map((contentRow, rowIndex) => (
-      <TableRow className={tableData?.skip || redirection === false ? "" : "table-row-cursor"} key={rowIndex}>
+    return tableData?.tableContents?.map((contentRow, index) => (
+      <TableRow className={tableData?.skip || redirection === false ? "" : "table-row-cursor"} key={index}>
         {tableData?.tableFields.map((field) => {
           let fieldName = field.id;
           let concatId = field?.concatId;
@@ -198,7 +197,10 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
                 </TableCell>
               ) : field.navigationLink ? (
                 <TableCell
-                  onClick={(event) => event.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    tableCellRouting(contentRow)
+                  }}
                   align={field.align ?? "left"}
                   className="link-cell-data"
                 >
@@ -211,7 +213,6 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
                       fontSize: "14px",
                       letterSpacing: "0.5px",
                     }}
-                    to={tableCellRouting(contentRow, field)}
                   >
                     {tableCellValue}
                   </Link>
@@ -221,13 +222,13 @@ const TableUI = ({ tableData, tableHeight, redirection, statusDisplay }) => {
               ) : field.isArrayOfObject ? (
                 renderArrayOfObject(tableCellValue, field.innerObjectKeys)
               ) : field.checkbox ? (
-                <TableCell align={field.align ?? "left"} width={"1px"} onClick={(e) => e.stopPropagation()}>
+                <TableCell align={field.align ?? "left"} width={"1px"} 
+                onChange={() => {
+                  setClicked(true);
+                  handleCheckboxClick(contentRow.id);
+                }}>
                   <CustomCheckbox
                     checked={selectAllChecked || selectedIds.includes(contentRow.id)}
-                    onChange={() => {
-                      setClicked(true);
-                      handleCheckboxClick(contentRow.id);
-                    }}
                   />
                 </TableCell>
               ) : (

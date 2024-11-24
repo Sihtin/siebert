@@ -8,6 +8,7 @@ import AccountManagement from "../pages/accountManagement/accountManagement";
 import { routingUrl } from "../../util/constant/UrlConstants";
 import Login from "../pages/login/login";
 import { getFromLocalStorage } from "../../util/common/LocalStorageUtils";
+import AuditLogs from "../pages/auditLog/auditLog";
 
 
 const PrivateRoute = ({ element, ...rest }) => {
@@ -39,6 +40,7 @@ const General = () => {
           <Route path={routingUrl.login} element={<Login />} />
           <Route path={routingUrl.dashboard} element={<PrivateRoute element={<Dashboard />} />} />
           <Route path={routingUrl.accountManagement} element={<PrivateRoute element={<AccountManagement />} />} />
+          <Route path={routingUrl.auditLogs} element={<PrivateRoute element={<AuditLogs />} />} />
         </Routes>
       </Grid>
     </Grid>

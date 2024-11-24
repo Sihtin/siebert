@@ -24,5 +24,35 @@ const accountManagementStyles = {
     },
     textTransform: "none",
   },
+  popupOverlay: {
+    position: "fixed",
+    padding:"4px",
+    top: 40,
+    left: 0,
+    width: "100%",
+    height: "93%",
+    zIndex: 990,
+    "@media (max-width: 649px)": {
+      left:0,
+    },
+    "@media (min-width: 650px) and (max-width: 899px)": {
+      left:200,
+    },
+    "@media (min-width: 900px) and (max-width: 1079px)": {
+      left:200,
+    },
+    "@media (min-width: 1080px) and (max-width: 1439px)": {
+      left:260,
+    },
+    "@media (min-width: 1440px)": {
+      left:260,
+    },
+  },
+  popupContent: {
+    background: "#fff",
+    padding: "20px",
+    borderRadius: "8px",
+    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
+  },
 };
 export default accountManagementStyles;
