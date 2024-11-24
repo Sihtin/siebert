@@ -1,12 +1,14 @@
 export const apiEndPoints = {
-  getAccount: "/api/Account",
   login: "/auth/login",
-  logout:"/auth/logout"
+  logout:"/auth/logout",
+  getAccount: "/api/Account",
+  getAuditLogs:"/api/Audit",
 };
 
 export const routingUrl = {
   defaultRenderingPage: "/",
   login: "/login",
   dashboard: "/dashboard",
-  accountManagement: "accountManagement",
+  accountManagement: "/accountManagement",
+  auditLogs:"/auditLogs"
 };
